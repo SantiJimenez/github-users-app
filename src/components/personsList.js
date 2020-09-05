@@ -12,18 +12,19 @@ const PersonsList = () => {
 
   return (
     <Fragment>
-      <h1 className="text-left text-2xl font-bold text-left p-5">
+      <h1 className="text-left text-24 font-bold text-left p-5">
         Top 5 GitHub Users
       </h1>
-      <p className="text-left text-gray-800 p-5">
+      <p className="text-left text-gray-800 text-16 px-5 pb-5">
         Tap the username to see more information
       </p>
-      <div className="flex flex-wrap w-full">
-        {personsList.map((person) => {
+      <div className="flex flex-wrap w-full px-5">
+        {personsList.map((person, index) => {
           return (
             <Link
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold m-2 py-2 px-4 rounded"
+              className="bg-blue_primary hover:bg-blue_secundary text-14 text-white mr-2 mb-2 py-2 px-4 rounded"
               to={`person/${person}`}
+              key={index}
             >
               {person}
             </Link>

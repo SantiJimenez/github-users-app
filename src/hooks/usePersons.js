@@ -1,13 +1,15 @@
 // import { useContext, useEffect, useState } from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPerson } from "../services/persons";
 
 export function usePerson(name) {
-  const { person, setPerson } = useState("");
+  const [person, setPerson] = useState("");
   async function loadPerson(name) {
     try {
-      const { data } = await getPerson(name);
-      setPerson(data);
+      if (person === "") {
+        const { data } = await getPerson(name);
+        setPerson(data);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -15,7 +17,6 @@ export function usePerson(name) {
 
   useEffect(() => {
     loadPerson(name);
-    return function cleanup() {};
   }, [person]);
 
   return person;
